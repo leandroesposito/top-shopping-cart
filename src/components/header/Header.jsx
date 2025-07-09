@@ -1,7 +1,7 @@
 function Header({ cartCount }) {
   return (
     <header>
-      <div className="left">
+      <div className="title">
         <h1>IShop</h1>
       </div>
     </header>
