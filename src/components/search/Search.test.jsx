@@ -14,7 +14,7 @@ describe("Search component", () => {
     const user = userEvent.setup();
     render(<Search onChange={onChange} />);
 
-    const input = screen.getByRole("search");
+    const input = screen.getByRole("textbox");
 
     await user.type(input, "pants");
 

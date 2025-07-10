@@ -10,9 +10,8 @@ function Search({ onChange }) {
   }
 
   return (
-    <div>
+    <div role="search">
       <input
-        role="search"
         placeholder="Search"
         onChange={onSearchChange}
         value={searchText}
