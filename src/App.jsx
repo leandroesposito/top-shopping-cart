@@ -1,10 +1,10 @@
 import "./App.css";
 import Header from "./components/header/Header";
 import { Outlet } from "react-router-dom";
-import useData from "./Data";
+import useFetchData from "./hooks/useFetchData";
 
 function App() {
-  const { data, loading, error } = useData();
+  const { data, loading, error } = useFetchData();
 
   return (
     <div className="body">
