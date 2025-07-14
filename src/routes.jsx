@@ -1,6 +1,8 @@
 import App from "./App";
 import ErrorPage from "./ErrorPage";
 import Home from "./components/home/Home";
+import Catalogue from "./components/catalogue/Catalogue";
+
 const routes = [
   {
     path: "/",
@@ -10,6 +12,10 @@ const routes = [
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "catalogue",
+        element: <Catalogue />,
       },
     ],
   },
