@@ -17,6 +17,10 @@ const routes = [
         path: "catalogue",
         element: <Catalogue />,
       },
+      {
+        path: "catalogue/category/:category",
+        element: <Catalogue />,
+      },
     ],
   },
 ];
