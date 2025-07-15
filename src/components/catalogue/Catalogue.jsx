@@ -1,14 +1,17 @@
 import ItemCard from "../itemCard/ItemCard";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 function Catalogue() {
   const { data, loading, error, addToCart } = useOutletContext();
+  const { category } = useParams();
 
   return (
     <div className="catalogue">
-      {data.map((item) => (
-        <ItemCard key={item.id} itemData={item} addToCart={addToCart} />
-      ))}
+      {data
+        .filter((item) => !category || item.category === category)
+        .map((item) => (
+          <ItemCard key={item.id} itemData={item} addToCart={addToCart} />
+        ))}
     </div>
   );
 }
