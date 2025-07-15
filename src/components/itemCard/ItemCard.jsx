@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ItemCard({ itemData, addToCart }) {
   function onAddToCart() {
     addToCart(itemData.id);
@@ -29,6 +31,11 @@ function ItemCard({ itemData, addToCart }) {
           {itemData.rating.rate} ({itemData.rating.count})
         </div>
         <div className="title">{itemData.title}</div>
+        <div className="category">
+          <Link to={`/catalogue/category/${itemData.category}`}>
+            {itemData.category}
+          </Link>
+        </div>
         <div className="price">${itemData.price}</div>
       </div>
     </div>
