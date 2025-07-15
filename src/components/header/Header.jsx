@@ -2,7 +2,7 @@ import Search from "../search/Search";
 import Navbar from "../navbar/Navbar";
 import CartIcon from "../cartIcon/CartIcon";
 
-function Header({ cartCount }) {
+function Header({ getTotalItems }) {
   return (
     <header>
       <div className="left">
@@ -15,7 +15,7 @@ function Header({ cartCount }) {
       </div>
       <div className="right">
         <Search />
-        <CartIcon cartCount={cartCount} />
+        <CartIcon cartCount={getTotalItems()} />
       </div>
     </header>
   );
