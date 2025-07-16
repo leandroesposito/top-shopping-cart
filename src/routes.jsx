@@ -2,6 +2,7 @@ import App from "./App";
 import ErrorPage from "./ErrorPage";
 import Home from "./components/home/Home";
 import Catalogue from "./components/catalogue/Catalogue";
+import Product from "./components/product/Product";
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
       {
         path: "catalogue/category/:category",
         element: <Catalogue />,
+      },
+      {
+        path: "product/:id",
+        element: <Product />,
       },
     ],
   },
