@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
 import ItemCard from "./ItemCard";
 
 const sampleItem = {
@@ -16,14 +17,22 @@ const sampleItem = {
 
 describe("ItemCard component", () => {
   it("render component", () => {
-    render(<ItemCard itemData={sampleItem} />);
+    render(
+      <MemoryRouter>
+        <ItemCard itemData={sampleItem} />
+      </MemoryRouter>
+    );
     expect(screen.getByText(sampleItem.title)).toBeInTheDocument();
   });
 
   it("call addToCart on click", async () => {
     const addToCart = vi.fn();
     const user = userEvent.setup();
-    render(<ItemCard itemData={sampleItem} addToCart={addToCart} />);
+    render(
+      <MemoryRouter>
+        <ItemCard itemData={sampleItem} addToCart={addToCart} />
+      </MemoryRouter>
+    );
 
     const button = screen.getByRole("button", { name: /add to cart/i });
     await user.click(button);
