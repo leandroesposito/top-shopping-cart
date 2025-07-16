@@ -30,7 +30,9 @@ function ItemCard({ itemData, addToCart }) {
           </div>
           {itemData.rating.rate} ({itemData.rating.count})
         </div>
-        <div className="title">{itemData.title}</div>
+        <Link to={`/product/${itemData.id}`}>
+          <div className="title">{itemData.title}</div>
+        </Link>
         <div className="category">
           <Link to={`/catalogue/category/${itemData.category}`}>
             {itemData.category}
