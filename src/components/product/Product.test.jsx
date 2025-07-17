@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Product from "./Product";
@@ -17,23 +17,43 @@ const data = {
   },
 };
 
+const mockAddToCart = vi.fn();
+
 describe("Product component", () => {
-  it.skip("Product render", () => {
-    const addToCart = vi.fn();
+  beforeEach(() => {
+    vi.mock("react-router-dom", async (importOriginal) => {
+      const actual = await importOriginal();
+      return {
+        ...actual,
+        useOutletContext: vi.fn(() => ({
+          data: data,
+          addToCart: mockAddToCart,
+        })),
+        useParams: vi.fn(() => ({
+          id: 1,
+        })),
+      };
+    });
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("Product render", () => {
     render(
       <MemoryRouter>
-        <Product data={data} itemId={1} addToCart={addToCart} />
+        <Product />
       </MemoryRouter>
     );
 
     expect(screen.getByText(data[1].title)).toBeInTheDocument();
   });
 
-  it.skip("Call addToCart on click", async () => {
-    const addToCart = vi.fn();
+  it("Call addToCart on click", async () => {
     render(
       <MemoryRouter>
-        <Product data={data} itemId={1} addToCart={addToCart} />
+        <Product />
       </MemoryRouter>
     );
     const user = userEvent.setup();
@@ -41,6 +61,65 @@ describe("Product component", () => {
     const button = screen.getByRole("button", { name: /add to cart/i });
     await user.click(button);
 
-    expect(addToCart).toBeCalled();
+    expect(mockAddToCart).toBeCalled();
+  });
+
+  it("render QuantitySelector", () => {
+    render(
+      <MemoryRouter>
+        <Product />
+      </MemoryRouter>
+    );
+    const addButton = screen.getByRole("button", { name: "add" });
+    const substractButton = screen.getByRole("button", { name: "substract" });
+    const value = screen.getByLabelText("value");
+
+    expect(addButton).toBeInTheDocument();
+    expect(substractButton).toBeInTheDocument();
+    expect(value).toBeInTheDocument();
+
+    expect(value.textContent).toBe("1");
+  });
+
+  it("clicking QuantitySelector add button increase its value", async () => {
+    render(
+      <MemoryRouter>
+        <Product />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+    const addButton = screen.getByRole("button", { name: "add" });
+    const value = screen.getByLabelText("value");
+
+    const clicks = 3;
+
+    for (let i = 0; i < clicks - 1; i++) {
+      await user.click(addButton);
+    }
+
+    expect(value.textContent).toBe(clicks.toString());
+  });
+
+  it("clicking QuantitySelector substract button decrease its value", async () => {
+    render(
+      <MemoryRouter>
+        <Product />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+    const addButton = screen.getByRole("button", { name: "add" });
+    const substractButton = screen.getByRole("button", { name: "substract" });
+    const value = screen.getByLabelText("value");
+
+    let clicks = 3;
+
+    for (let i = 0; i < clicks - 1; i++) {
+      await user.click(addButton);
+    }
+
+    await user.click(substractButton);
+    clicks -= 1;
+
+    expect(value.textContent).toBe(clicks.toString());
   });
 });
