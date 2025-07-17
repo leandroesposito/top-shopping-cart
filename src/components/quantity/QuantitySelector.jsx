@@ -4,7 +4,9 @@ function QuantitySelector({ quantity, onAddClick, onSubClick }) {
       <button aria-label="substract" onClick={onSubClick}>
         -
       </button>
-      <div className="value">{quantity}</div>
+      <div className="value" aria-label="value">
+        {quantity}
+      </div>
       <button aria-label="add" onClick={onAddClick}>
         +
       </button>
