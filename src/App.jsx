@@ -6,13 +6,22 @@ import useCart from "./hooks/useCart";
 
 function App() {
   const { data, loading, error } = useFetchData();
-  const { getTotalItems, addToCart } = useCart();
+  const { getCart, getTotalItems, addToCart, setItemCount } = useCart();
 
   return (
     <div className="body">
       <Header getTotalItems={getTotalItems} />
       <main>
-        <Outlet context={{ data, loading, error, addToCart }} />
+        <Outlet
+          context={{
+            data,
+            loading,
+            error,
+            addToCart,
+            cart: getCart(),
+            setItemCount,
+          }}
+        />
       </main>
     </div>
   );
