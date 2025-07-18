@@ -7,7 +7,7 @@ function Catalogue() {
 
   return (
     <div className="catalogue">
-      {data
+      {Object.values(data)
         .filter((item) => !category || item.category === category)
         .map((item) => (
           <ItemCard key={item.id} itemData={item} addToCart={addToCart} />

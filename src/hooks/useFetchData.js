@@ -5,6 +5,14 @@ function useFetchData() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  function toObject(data) {
+    const obj = {};
+    for (const item of data) {
+      obj[item.id] = item;
+    }
+    return obj;
+  }
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => {
@@ -13,7 +21,7 @@ function useFetchData() {
         }
         throw new Error(response.statusText);
       })
-      .then((data) => setData(data))
+      .then((data) => setData(toObject(data)))
       .catch((error) => {
         setError(error);
       })
