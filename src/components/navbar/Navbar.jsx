@@ -5,6 +5,7 @@ function Navbar() {
     <nav>
       <Link to="/">Home</Link>
       <Link to="catalogue">Catalogue</Link>
+      <Link to="cart">Cart</Link>
     </nav>
   );
 }
