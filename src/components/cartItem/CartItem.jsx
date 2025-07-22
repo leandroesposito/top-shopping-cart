@@ -1,5 +1,6 @@
 import { Link, useOutletContext } from "react-router-dom";
 import QuantitySelector from "../quantity/QuantitySelector";
+import styles from "./CartItem.module.css";
 
 function CartItem({ itemData, quantity }) {
   const { setItemCount } = useOutletContext();
@@ -26,7 +27,7 @@ function CartItem({ itemData, quantity }) {
       </div>
       <div className="item-image">
         <div className="image-container">
-          <div className="image">
+          <div className={styles.image}>
             <img src={itemData.image} alt={itemData.title} />
           </div>
         </div>
