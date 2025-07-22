@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styles from "./ItemCard.module.css";
 
 function ItemCard({ itemData, addToCart }) {
   function onAddToCart() {
@@ -9,7 +10,7 @@ function ItemCard({ itemData, addToCart }) {
     <div className="item-card">
       <div className="item-header">
         <div className="image-container">
-          <div className="image">
+          <div className={styles.image}>
             <img src={itemData.image} alt={itemData.title} />
           </div>
         </div>
