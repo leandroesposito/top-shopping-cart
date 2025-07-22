@@ -6,7 +6,8 @@ import useCart from "./hooks/useCart";
 
 function App() {
   const { data, loading, error } = useFetchData();
-  const { getCart, getTotalItems, addToCart, setItemCount } = useCart();
+  const { getCart, getTotalItems, addToCart, setItemCount, removeFromCart } =
+    useCart();
 
   return (
     <div className="body">
@@ -20,6 +21,7 @@ function App() {
             addToCart,
             cart: getCart(),
             setItemCount,
+            removeFromCart,
           }}
         />
       </main>
