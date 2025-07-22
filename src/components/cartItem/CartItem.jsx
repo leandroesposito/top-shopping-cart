@@ -3,7 +3,7 @@ import QuantitySelector from "../quantity/QuantitySelector";
 import styles from "./CartItem.module.css";
 
 function CartItem({ itemData, quantity }) {
-  const { setItemCount } = useOutletContext();
+  const { setItemCount, removeFromCart } = useOutletContext();
 
   function onAddClick() {
     setItemCount(itemData.id, quantity + 1);
@@ -20,7 +20,9 @@ function CartItem({ itemData, quantity }) {
         <button
           className="delete"
           aria-label="Remove from cart"
-          onClick={() => {}}
+          onClick={() => {
+            removeFromCart(itemData.id);
+          }}
         >
           delete-icon
         </button>
