@@ -22,7 +22,12 @@ function useCart() {
     setCart({ ...cart, [itemId]: count });
   }
 
-  return { getCart, getTotalItems, addToCart, setItemCount };
+  function removeFromCart(itemId) {
+    const { [itemId]: _, ...newCart } = cart;
+    setCart(newCart);
+  }
+
+  return { getCart, getTotalItems, addToCart, setItemCount, removeFromCart };
 }
 
 export default useCart;
