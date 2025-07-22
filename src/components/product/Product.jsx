@@ -44,7 +44,7 @@ function Product({ itemId }) {
         </div>
         <div className="category">
           Category
-          <Link to={`catalogue/category/${itemData.category}`}>
+          <Link to={`/catalogue/category/${itemData.category}`}>
             {itemData.category}
           </Link>
         </div>
