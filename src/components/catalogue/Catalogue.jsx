@@ -4,12 +4,29 @@ import styles from "./Catalogue.module.css";
 
 function Catalogue() {
   const { data, loading, error, addToCart } = useOutletContext();
-  const { category } = useParams();
+  const { category, search } = useParams();
+
+  function isCategory(item, category) {
+    return !category || item.category === category;
+  }
+
+  function fulfillsSearch(item, searchTerm) {
+    if (!searchTerm) {
+      return true;
+    }
+
+    const itemContent =
+      `${item.title} ${item.description} ${item.category}`.toLowerCase();
+    const searchTerms = searchTerm.toLowerCase().split(" ");
+
+    return searchTerms.every((s) => itemContent.includes(s));
+  }
 
   return (
     <div className={styles.catalogue}>
       {Object.values(data)
-        .filter((item) => !category || item.category === category)
+        .filter((item) => isCategory(item, category))
+        .filter((item) => fulfillsSearch(item, search))
         .map((item) => (
           <ItemCard key={item.id} itemData={item} addToCart={addToCart} />
         ))}
