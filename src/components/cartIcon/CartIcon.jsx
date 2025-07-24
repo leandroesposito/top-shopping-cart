@@ -1,10 +1,15 @@
+import icon from "../../assets/icons/cart-shopping.svg";
+import styles from "./CartIcon.module.css";
+
 function CartIcon({ cartCount }) {
   return (
-    <div className="cartCount">
+    <div className={styles.cartCount}>
       <div className="iconContainer">
-        <div className="icon">cart</div>
+        <div className={styles.icon}>
+          <img src={icon} alt="cart" />
+        </div>
       </div>
-      {cartCount ?? null}
+      <div className={styles.number}>{cartCount ?? null}</div>
     </div>
   );
 }
