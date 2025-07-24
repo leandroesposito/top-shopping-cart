@@ -1,0 +1,32 @@
+header {
+  padding: 2rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left,
+.right {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.right {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.right {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
