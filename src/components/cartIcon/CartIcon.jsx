@@ -9,7 +9,9 @@ function CartIcon({ cartCount }) {
           <img src={icon} alt="cart" />
         </div>
       </div>
-      <div className={styles.number}>{cartCount ?? null}</div>
+      {cartCount > 1 && (
+        <div className={styles.number}>{cartCount ?? null}</div>
+      )}
     </div>
   );
 }
