@@ -1,12 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Search({ onChange }) {
-  const [searchText, setSearchText] = useState("");
+function Search() {
+  const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
 
   function onSearchChange(event) {
-    const newValue = event.target.value;
-    setSearchText(newValue);
-    onChange(newValue);
+    const newSearchValue = event.target.value;
+    setSearchValue(newSearchValue);
+    runSearch(newSearchValue);
+  }
+
+  function runSearch(searchValue) {
+    if (searchValue) {
+      navigate(`/search/${searchValue}`);
+    } else {
+      navigate(`/catalogue`);
+    }
   }
 
   return (
@@ -14,7 +24,7 @@ function Search({ onChange }) {
       <input
         placeholder="Search"
         onChange={onSearchChange}
-        value={searchText}
+        value={searchValue}
       ></input>
     </div>
   );
