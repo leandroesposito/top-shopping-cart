@@ -13,10 +13,16 @@ img {
 }
 
 .number {
+  width: 1.7rem;
+  height: 1.7rem;
   position: absolute;
-  right: 0;
-  top: 0;
-  padding: 3px;
-  background-color: aqua;
-  border-radius: 0.5rem;
+  right: -50%;
+  top: -25%;
+  background-color: rgb(255, 60, 0);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.8rem;
 }
