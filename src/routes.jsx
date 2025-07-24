@@ -28,6 +28,10 @@ const routes = [
         element: <Product />,
       },
       {
+        path: "search/:search",
+        element: <Catalogue />,
+      },
+      {
         path: "cart",
         element: <Cart />,
       },
