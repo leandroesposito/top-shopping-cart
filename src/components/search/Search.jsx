@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./Search.module.css";
 
 function Search() {
   const [searchValue, setSearchValue] = useState("");
@@ -20,7 +21,7 @@ function Search() {
   }
 
   return (
-    <div role="search">
+    <div role="search" className={styles.searchContainer}>
       <input
         placeholder="Search"
         onChange={onSearchChange}
