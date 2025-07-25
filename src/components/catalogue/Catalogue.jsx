@@ -24,12 +24,20 @@ function Catalogue() {
 
   return (
     <div className={styles.catalogue}>
-      {Object.values(data)
-        .filter((item) => isCategory(item, category))
-        .filter((item) => fulfillsSearch(item, search))
-        .map((item) => (
-          <ItemCard key={item.id} itemData={item} addToCart={addToCart} />
-        ))}
+      <div className={styles.title}>
+        <h2>Catalogue</h2>{" "}
+        {category && (
+          <span className={styles.category}> {" > " + category}</span>
+        )}
+      </div>
+      <div className={styles.catalogueList}>
+        {Object.values(data)
+          .filter((item) => isCategory(item, category))
+          .filter((item) => fulfillsSearch(item, search))
+          .map((item) => (
+            <ItemCard key={item.id} itemData={item} addToCart={addToCart} />
+          ))}
+      </div>
     </div>
   );
 }
