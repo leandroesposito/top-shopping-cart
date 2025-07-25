@@ -25,6 +25,8 @@ function Search() {
         placeholder="Search"
         onChange={onSearchChange}
         value={searchValue}
+        aria-label="search"
+        name="search"
       ></input>
     </div>
   );
