@@ -3,7 +3,7 @@
   height: 300px;
 }
 
-img {
+.image img {
   width: inherit;
   height: inherit;
 }
