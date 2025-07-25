@@ -1,0 +1,21 @@
+.quantitySelector {
+  display: flex;
+}
+
+.quantitySelector > * {
+  padding: 0.2rem 1rem;
+  border: 4px solid white;
+}
+
+.quantitySelector button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.quantitySelector button:hover {
+  background-color: rgb(32, 32, 32);
+}
+.quantitySelector button:active {
+  background-color: rgb(58, 58, 58);
+}
