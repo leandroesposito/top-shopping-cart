@@ -1,4 +1,16 @@
-.catalogue {
+.catalogueList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap: 2rem;
+  row-gap: 6rem;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.category {
+  color: rgb(89, 89, 89);
 }
