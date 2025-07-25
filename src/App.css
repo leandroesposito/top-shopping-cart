@@ -45,16 +45,21 @@
 }
 
 body,
-input {
+input,
+button {
   font-family: Montserrat;
 }
 
 main {
   display: flex;
   justify-content: center;
-  padding-top: 2rem;
 }
 
 main > div {
   max-width: 1000px;
+  flex: 1;
+}
+
+h2 {
+  margin: 2rem 0 3rem 0;
 }
