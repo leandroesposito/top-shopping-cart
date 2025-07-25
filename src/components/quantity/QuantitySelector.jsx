@@ -1,10 +1,12 @@
+import styles from "./QuantitySelector.module.css";
+
 function QuantitySelector({ quantity, onAddClick, onSubClick }) {
   return (
-    <div className="quantity-selector">
+    <div className={styles.quantitySelector}>
       <button aria-label="substract" onClick={onSubClick}>
         -
       </button>
-      <div className="value" aria-label="value">
+      <div className={styles.value} aria-label="value">
         {quantity}
       </div>
       <button aria-label="add" onClick={onAddClick}>
