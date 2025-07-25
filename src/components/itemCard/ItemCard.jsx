@@ -7,41 +7,37 @@ function ItemCard({ itemData, addToCart }) {
   }
 
   return (
-    <div className="item-card">
-      <Link to={`/product/${itemData.id}`}>
-        <div className="item-header">
-          <div className="image-container">
+    <div className={styles.itemCard}>
+      <div className={styles.itemHeader}>
+        <Link to={`/product/${itemData.id}`}>
+          <div className={styles.imageContainer}>
             <div className={styles.image}>
               <img src={itemData.image} alt={itemData.title} />
             </div>
           </div>
-          <div className="cart-button-container">
-            <button
-              className="cart"
-              aria-label="Add to cart"
-              onClick={onAddToCart}
-            >
-              cart-icon
-            </button>
-          </div>
+        </Link>
+        <div className={styles.cartButtonContainer}>
+          <button className={styles.cartButton} onClick={onAddToCart}>
+            ADD TO CART
+          </button>
         </div>
-      </Link>
-      <div className="item-body">
-        <div className="rating">
-          <div className="icon-container">
-            <div className="icon">star-icon</div>
+      </div>
+      <div className={styles.itemBody}>
+        <div className={styles.rating}>
+          <div className={styles.iconContainer}>
+            <div className={styles.icon}>⭐</div>
           </div>
           {itemData.rating.rate} ({itemData.rating.count})
         </div>
         <Link to={`/product/${itemData.id}`}>
-          <div className="title">{itemData.title}</div>
+          <div className={styles.title}>{itemData.title}</div>
         </Link>
-        <div className="category">
+        <div className={styles.category}>
           <Link to={`/catalogue/category/${itemData.category}`}>
             {itemData.category}
           </Link>
         </div>
-        <div className="price">${itemData.price}</div>
+        <div className={styles.price}>${itemData.price}</div>
       </div>
     </div>
   );
