@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import QuantitySelector from "../quantity/QuantitySelector";
+import styles from "./Product.module.css";
 
 function Product({ itemId }) {
   const [quantity, setQuantity] = useState(1);
@@ -25,42 +26,50 @@ function Product({ itemId }) {
   }
 
   return (
-    <div className="product">
-      <div className="left">
-        <div className="image-container">
-          <div className="image">
-            <img src={itemData.image} alt={itemData.title} />
-          </div>
-        </div>
+    <div>
+      <div className="title">
+        <h2>Product</h2>
       </div>
-      <div className="right">
-        <div className="title">{itemData.title}</div>
-        <div className="price">${itemData.price}</div>
-        <div className="rating">
-          <div className="icon-container">
-            <div className="icon">star-icon</div>
+      <div className={styles.product}>
+        <div className={styles.left}>
+          <div className={styles.imageContainer}>
+            <div className={styles.image}>
+              <img src={itemData.image} alt={itemData.title} />
+            </div>
           </div>
-          {itemData.rating.rate} ({itemData.rating.count})
         </div>
-        <div className="category">
-          Category
-          <Link to={`/catalogue/category/${itemData.category}`}>
-            {itemData.category}
-          </Link>
+        <div className={styles.right}>
+          <div className={styles.title}>
+            <h3>{itemData.title}</h3>
+          </div>
+          <div className={styles.price}>$ {itemData.price}</div>
+          <div className={styles.rating}>
+            <div className={styles.iconContainer}>
+              <div className={styles.icon}>⭐</div>
+            </div>
+            {itemData.rating.rate} ({itemData.rating.count})
+          </div>
+          <div className={styles.category}>
+            <div className={styles.subtitle}>Category</div>
+            <Link to={`/catalogue/category/${itemData.category}`}>
+              {itemData.category}
+            </Link>
+          </div>
+          <div className={styles.quantity}>
+            <div className={styles.subtitle}>Quantity</div>
+            <QuantitySelector
+              quantity={quantity}
+              onAddClick={onAddClick}
+              onSubClick={onSubClick}
+            />
+          </div>
+          <div className={styles.buttons}>
+            <button className={styles.cartButton} onClick={onAddToCartClick}>
+              Add to cart
+            </button>
+          </div>
+          <div className={styles.description}>{itemData.description}</div>
         </div>
-        <div className="quantity">
-          <QuantitySelector
-            quantity={quantity}
-            onAddClick={onAddClick}
-            onSubClick={onSubClick}
-          />
-        </div>
-        <div className="buttons">
-          <button className="add-to-cart" onClick={onAddToCartClick}>
-            Add to cart
-          </button>
-        </div>
-        <div className="description">{itemData.description}</div>
       </div>
     </div>
   );
