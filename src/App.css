@@ -63,3 +63,9 @@ main > div {
 h2 {
   margin: 2rem 0 3rem 0;
 }
+
+@media screen and (max-width: 1000px) {
+  main {
+    padding: 1rem;
+  }
+}
