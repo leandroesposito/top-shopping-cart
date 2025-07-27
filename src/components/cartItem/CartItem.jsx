@@ -15,44 +15,44 @@ function CartItem({ itemData, quantity }) {
   }
 
   return (
-    <div className="cart-item">
-      <div className="delete-button-container">
+    <div className={styles.cartItem}>
+      <div className={styles.deleteButtonContainer}>
         <button
-          className="delete"
+          className={styles.delete}
           aria-label="Remove from cart"
           onClick={() => {
             removeFromCart(itemData.id);
           }}
         >
-          delete-icon
+          Remove
         </button>
       </div>
-      <div className="item-image">
-        <div className="image-container">
+      <div className={styles.itemImage}>
+        <div className={styles.imageContainer}>
           <div className={styles.image}>
             <img src={itemData.image} alt={itemData.title} />
           </div>
         </div>
       </div>
-      <div className="item-info">
-        <Link to={`/product/${itemData.id}`}>
-          <div className="title">
+      <div className={styles.itemInfo}>
+        <div className={styles.title}>
+          <Link to={`/product/${itemData.id}`}>
             <h3>{itemData.title}</h3>
-          </div>
-        </Link>
-        <div className="description">
-          <div className="title">{itemData.description}</div>
+          </Link>
+        </div>
+        <div className={styles.description}>
+          <div>{itemData.description}</div>
         </div>
       </div>
-      <div className="item-quantity">
+      <div className={styles.quantityColumn}>
         <QuantitySelector
           onAddClick={onAddClick}
           onSubClick={onSubClick}
           quantity={quantity}
         />
       </div>
-      <div className="sub-total">
-        <div className="sub-total">${itemData.price * quantity}</div>
+      <div className={styles.totalColumn}>
+        <div>${Math.trunc(itemData.price * quantity * 10) / 10}</div>
       </div>
     </div>
   );
