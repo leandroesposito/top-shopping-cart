@@ -16,7 +16,7 @@ function Cart() {
       subTotal += itemTotal;
     }
 
-    return subTotal;
+    return Math.trunc(subTotal * 10) / 10;
   }
 
   const subTotal = getSubTotal();
