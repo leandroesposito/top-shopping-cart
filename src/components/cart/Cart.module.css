@@ -1,0 +1,77 @@
+.tableHeaders {
+  display: flex;
+  justify-content: end;
+  text-align: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  columns: rgb(48, 48, 48);
+}
+
+.tableHeaders > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantityColumn {
+  flex: 0 0 150px;
+}
+
+.totalColumn {
+  flex: 0 0 100px;
+}
+
+.totals {
+  justify-self: end;
+  display: grid;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.row {
+  display: flex;
+}
+
+.label {
+  flex: 1 0 200px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: rgb(89, 89, 89);
+}
+
+.cost {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: rgb(48, 48, 48);
+}
+
+.cost.total {
+  font-size: 1.7rem;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  flex: 1;
+  font-size: 1.3rem;
+}
+
+.buttons button {
+  padding: 1rem;
+  border: 4px solid white;
+  background-color: black;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.buttons button:hover {
+  background-color: rgb(34, 34, 34);
+}
+.buttons button:active {
+  background-color: rgb(59, 59, 59);
+}
