@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import CartItem from "../cartItem/CartItem";
+import styles from "./Cart.module.css";
 
 function Cart() {
   const { data, cart } = useOutletContext();
@@ -24,11 +25,15 @@ function Cart() {
   const total = subTotal + shippingCost;
 
   return (
-    <div className="cart">
-      <div className="title">
+    <div className={styles.cart}>
+      <div className={styles.title}>
         <h2>Cart</h2>
       </div>
-      <div className="cart-list">
+      <div className={styles.cartList}>
+        <div className={styles.tableHeaders}>
+          <div className={styles.quantityColumn}>Quantity</div>
+          <div className={styles.totalColumn}>Total</div>
+        </div>
         {Object.entries(cart).map((item) => {
           const [id, quantity] = item;
           const intId = parseInt(id);
@@ -37,18 +42,21 @@ function Cart() {
           );
         })}
       </div>
-      <div className="totals">
-        <div className="row">
-          <div className="label">Subtotal: ${subTotal}</div>
-          <div className="cost"></div>
+      <div className={styles.totals}>
+        <div className={styles.row}>
+          <div className={styles.label}>Subtotal: </div>
+          <div className={styles.cost}>${subTotal}</div>
         </div>
-        <div className="row">
-          <div className="label">Shipping: </div>
-          <div className="cost">${shippingCost}</div>
+        <div className={styles.row}>
+          <div className={styles.label}>Shipping: </div>
+          <div className={styles.cost}>${shippingCost}</div>
         </div>
-        <div className="row">
-          <div className="label">Total: </div>
-          <div className="cost total">${total}</div>
+        <div className={styles.row}>
+          <div className={styles.label}>Total: </div>
+          <div className={`${styles.cost} ${styles.total}`}>${total}</div>
+        </div>
+        <div className={styles.buttons}>
+          <button>Secure Payment</button>
         </div>
       </div>
     </div>
