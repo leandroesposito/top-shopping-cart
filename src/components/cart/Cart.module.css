@@ -1,3 +1,8 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
 .tableHeaders {
   display: flex;
   justify-content: end;
@@ -23,7 +28,7 @@
 }
 
 .totals {
-  justify-self: end;
+  align-self: end;
   display: grid;
   gap: 1rem;
   margin-top: 3rem;
@@ -34,7 +39,7 @@
 }
 
 .label {
-  flex: 1 0 200px;
+  flex: 0 0 200px;
   font-size: 1.3rem;
   font-weight: bold;
   color: rgb(89, 89, 89);
