@@ -75,3 +75,10 @@
 .buttons button:active {
   background-color: rgb(59, 59, 59);
 }
+
+.empty {
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(117, 117, 117);
+  font-weight: bold;
+}
