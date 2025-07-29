@@ -1,0 +1,15 @@
+.error {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(180, 0, 0);
+}
+
+.message {
+  color: rgb(116, 116, 116);
+}
