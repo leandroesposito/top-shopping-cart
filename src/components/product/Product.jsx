@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import QuantitySelector from "../quantity/QuantitySelector";
 import styles from "./Product.module.css";
+import Loading from "../loading/Loading";
 
 function Product({ itemId }) {
   const [quantity, setQuantity] = useState(1);
@@ -22,7 +23,7 @@ function Product({ itemId }) {
   }
 
   if (loading) {
-    return <>Loading...</>;
+    return <Loading />;
   }
 
   return (
