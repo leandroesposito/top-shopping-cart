@@ -1,6 +1,8 @@
 import ItemCard from "../itemCard/ItemCard";
 import { useOutletContext, useParams } from "react-router-dom";
 import styles from "./Catalogue.module.css";
+import Loading from "../loading/Loading";
+import Error from "../error/Error";
 
 function Catalogue() {
   const { data, loading, error, addToCart } = useOutletContext();
@@ -20,6 +22,14 @@ function Catalogue() {
     const searchTerms = searchTerm.toLowerCase().split(" ");
 
     return searchTerms.every((s) => itemContent.includes(s));
+  }
+
+  if (error) {
+    return <Error error={error} />;
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (
