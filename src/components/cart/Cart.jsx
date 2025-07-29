@@ -24,6 +24,19 @@ function Cart() {
   const shippingCost = 60;
   const total = subTotal + shippingCost;
 
+  const cartIsEmpty = Object.keys(cart).length == 0;
+
+  if (cartIsEmpty) {
+    return (
+      <div className={styles.cart}>
+        <div className={styles.title}>
+          <h2>Cart</h2>
+        </div>
+        <div className={styles.empty}>Your cart is empty.</div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.cart}>
       <div className={styles.title}>
