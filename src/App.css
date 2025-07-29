@@ -53,6 +53,7 @@ button {
 main {
   display: flex;
   justify-content: center;
+  padding: 2rem 0;
 }
 
 main > div {
@@ -61,7 +62,7 @@ main > div {
 }
 
 h2 {
-  margin: 2rem 0 3rem 0;
+  margin-bottom: 3rem;
 }
 
 @media screen and (max-width: 1000px) {
