@@ -97,4 +97,19 @@ describe("Cart component", () => {
       screen.queryByText("Mens Casual Premium Slim Fit T-Shirts")
     ).toBeNull();
   });
+
+  it("sum total correctly", () => {
+    mockUseOutletContext.mockReturnValue({
+      data: mockData,
+      cart: mockSampleCart,
+    });
+    const shippingCost = 60;
+    const cartTotal =
+      mockData[1].price * mockSampleCart[1] +
+      mockData[3].price * mockSampleCart[3];
+    const total = Math.trunc((shippingCost + cartTotal) * 10) / 10;
+    render(<Cart />);
+
+    expect(screen.getByText(total, { exact: false })).toBeInTheDocument();
+  });
 });
