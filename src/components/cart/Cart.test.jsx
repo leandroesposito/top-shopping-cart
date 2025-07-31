@@ -91,6 +91,7 @@ describe("Cart component", () => {
     expect(
       screen.getByText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops")
     ).toBeInTheDocument();
+    expect(screen.getByText("Mens Cotton Jacket")).toBeInTheDocument();
 
     expect(
       screen.queryByText("Mens Casual Premium Slim Fit T-Shirts")
