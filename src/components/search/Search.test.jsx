@@ -1,18 +1,42 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { screen, render } from "@testing-library/react";
 import Search from "./Search.jsx";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
+
+const useNavigateMock = vi.fn();
 
 describe("Search component", () => {
+  beforeEach(() => {
+    vi.mock("react-router-dom", async (importOriginal) => {
+      const actual = await importOriginal();
+      return {
+        ...actual,
+        useNavigate: () => useNavigateMock,
+      };
+    });
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("render element", () => {
-    render(<Search />);
+    render(
+      <MemoryRouter>
+        <Search />
+      </MemoryRouter>
+    );
     expect(screen.getByRole("search")).toBeInTheDocument();
   });
 
-  it("call onChange when typing", async () => {
-    const onChange = vi.fn();
+  it("call navigate with typed value when typing", async () => {
     const user = userEvent.setup();
-    render(<Search onChange={onChange} />);
+    render(
+      <MemoryRouter>
+        <Search />
+      </MemoryRouter>
+    );
 
     const input = screen.getByRole("textbox");
 
@@ -20,13 +44,35 @@ describe("Search component", () => {
 
     expect(input).toHaveValue("pants");
 
-    expect(onChange).toHaveBeenCalled();
+    expect(useNavigateMock).toHaveBeenCalled();
+    expect(useNavigateMock).toHaveBeenCalledWith("/search/pants");
   });
 
-  it("not call onChange when user didn't type", async () => {
-    const onChange = vi.fn();
-    render(<Search onChange={onChange} />);
+  it("not call navigate when user didn't type", async () => {
+    render(
+      <MemoryRouter>
+        <Search />
+      </MemoryRouter>
+    );
 
-    expect(onChange).not.toHaveBeenCalled();
+    expect(useNavigateMock).not.toHaveBeenCalled();
+  });
+
+  it("call navigate to catalogue when input is emptied", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <Search />
+      </MemoryRouter>
+    );
+
+    const input = screen.getByRole("textbox");
+
+    await user.type(input, "pants");
+    expect(input).toHaveValue("pants");
+    expect(useNavigateMock).toHaveBeenCalledWith("/search/pants");
+
+    await user.clear(input);
+    expect(useNavigateMock).toHaveBeenCalledWith("/catalogue");
   });
 });
