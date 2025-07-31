@@ -1,6 +1,6 @@
 import styles from "./Error.module.css";
 
-function Error(error) {
+function Error({ error }) {
   return (
     <div className={styles.error}>
       Error...
