@@ -1,6 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 import CartItem from "./CartItem";
 
 const sampleItem = {
@@ -14,6 +15,9 @@ const sampleItem = {
   rating: { rate: 4.7, count: 500 },
 };
 
+const setItemCountMock = vi.fn();
+const removeFromCartMock = vi.fn();
+
 describe("CartItem component", () => {
   beforeEach(() => {
     vi.mock("react-router-dom", async (importOriginal) => {
@@ -21,10 +25,15 @@ describe("CartItem component", () => {
       return {
         ...actual,
         useOutletContext: vi.fn(() => ({
-          setItemCount: vi.fn(),
+          setItemCount: setItemCountMock,
+          removeFromCart: removeFromCartMock,
         })),
       };
     });
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
   });
 
   it("render component", () => {
@@ -34,5 +43,53 @@ describe("CartItem component", () => {
       </MemoryRouter>
     );
     expect(screen.getByText(sampleItem.title)).toBeInTheDocument();
+  });
+
+  it("call removeFromCart on click", async () => {
+    render(
+      <MemoryRouter>
+        <CartItem itemData={sampleItem} />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+
+    const removeFromCartBtn = screen.getByRole("button", {
+      name: /remove from cart/i,
+    });
+    await user.click(removeFromCartBtn);
+
+    expect(removeFromCartMock).toHaveBeenCalled();
+  });
+
+  it("call setItemCount when click add button", async () => {
+    render(
+      <MemoryRouter>
+        <CartItem itemData={sampleItem} />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+
+    const addBtn = screen.getByRole("button", {
+      name: /add/i,
+    });
+    await user.click(addBtn);
+
+    expect(setItemCountMock).toHaveBeenCalled();
+  });
+
+  it("call setItemCount when click substract button", async () => {
+    render(
+      <MemoryRouter>
+        <CartItem itemData={sampleItem} />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+
+    const substractBtn = screen.getByRole("button", {
+      name: /substract/i,
+    });
+    await user.click(substractBtn);
+
+    expect(setItemCountMock).toHaveBeenCalled();
   });
 });
