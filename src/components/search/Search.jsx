@@ -23,6 +23,7 @@ function Search() {
   return (
     <div role="search" className={styles.searchContainer}>
       <input
+        size="1"
         placeholder="Search"
         onChange={onSearchChange}
         value={searchValue}
