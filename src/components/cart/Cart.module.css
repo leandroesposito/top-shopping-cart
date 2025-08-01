@@ -87,3 +87,32 @@
   color: rgb(117, 117, 117);
   font-weight: bold;
 }
+
+@media screen and (max-width: 1000px) {
+  .quantityColumn {
+    flex: 0 0 100px;
+  }
+
+  .totalColumn {
+    flex: 0 0 75px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .tableHeaders .quantityColumn,
+  .tableHeaders .totalColumn {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .totals {
+    align-self: auto;
+    display: grid;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .label {
+    flex: 1;
+  }
+}
