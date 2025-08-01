@@ -1,6 +1,15 @@
+.searchContainer {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
 .searchContainer input {
   border: 2px solid rgb(81, 81, 81);
   color: rgb(81, 81, 81);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
+  min-width: 5rem;
+  max-width: 10rem;
+  width: 100%;
 }
