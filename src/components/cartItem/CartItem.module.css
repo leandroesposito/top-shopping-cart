@@ -76,3 +76,72 @@
 .description {
   color: rgb(89, 89, 89);
 }
+
+@media screen and (max-width: 1000px) {
+  .cartItem {
+    padding: 1rem 0;
+    gap: 1rem;
+    color: rgb(48, 48, 48);
+  }
+  .quantityColumn {
+    flex: 0 0 100px;
+    font-size: 1rem;
+  }
+
+  .totalColumn {
+    flex: 0 0 75px;
+    font-size: 1rem;
+  }
+
+  .deleteButtonContainer button {
+    font-size: 1rem;
+  }
+
+  .title a {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .cartItem {
+    display: grid;
+    grid-template-areas:
+      "itemInfo itemInfo itemInfo itemInfo"
+      "image remove quantity total";
+    gap: 1rem;
+  }
+
+  .itemInfo {
+    grid-area: itemInfo;
+  }
+
+  .itemImage {
+    grid-area: image;
+  }
+
+  .deleteButtonContainer {
+    grid-area: remove;
+  }
+
+  .quantityColumn {
+    grid-area: quantity;
+  }
+
+  .totalColumn {
+    grid-area: total;
+  }
+
+  .description {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cartItem {
+    display: grid;
+    grid-template-areas:
+      "itemInfo itemInfo"
+      "image quantity"
+      "remove total";
+    gap: 1rem;
+  }
+}
