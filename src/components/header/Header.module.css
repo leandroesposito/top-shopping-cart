@@ -24,13 +24,6 @@
 
 .right {
   display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 2rem;
-}
-
-.right {
-  display: flex;
   justify-content: end;
   align-items: center;
   gap: 2rem;
