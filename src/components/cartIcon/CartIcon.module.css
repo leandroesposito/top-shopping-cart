@@ -18,11 +18,12 @@
   position: absolute;
   right: -50%;
   top: -25%;
-  background-color: rgb(255, 60, 0);
+  background-color: #ff6333;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
+  font-weight: bold;
   font-size: 0.8rem;
 }
