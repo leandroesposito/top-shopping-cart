@@ -17,6 +17,15 @@ This project was specifically designed to demonstrate and practice:
 ## Live Demo
 
 [View Live Demo](https://prismatic-cheesecake-c74827.netlify.app/)
+\*The free servers may take a few seconds to respond on first request.
+
+## Screenshots
+
+![Home](https://github.com/leandroesposito/top-shopping-cart/blob/main/screenshots/1_home.png)
+![Catalogue](https://github.com/leandroesposito/top-shopping-cart/blob/main/screenshots/2_catalogue.png)
+![Category](https://github.com/leandroesposito/top-shopping-cart/blob/main/screenshots/3_category.png)
+![Product](https://github.com/leandroesposito/top-shopping-cart/blob/main/screenshots/4_product.png)
+![Cart](https://github.com/leandroesposito/top-shopping-cart/blob/main/screenshots/5_cart.png)
 
 ## React Testing
 
@@ -559,4 +568,3 @@ App Component
 - **CSS-in-JS** - Dynamic styles, theming
 - **Utility Frameworks** - Rapid development
 - **Component Libraries** - Pre-built accessible components
-
